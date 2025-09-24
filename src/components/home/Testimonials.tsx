@@ -1,43 +1,137 @@
-import React from 'react';
+'use client';
+
+import React, { useState, useEffect, useRef } from 'react';
 
 const Testimonials = () => {
+    const [currentIndex, setCurrentIndex] = useState(0);
+    const intervalRef = useRef<NodeJS.Timeout | null>(null);
+
     const testimonials = [
         {
-            name: "Sarah Johnson",
-            review: "Amazing service! The team at XFactor always knows exactly what I need. I leave feeling beautiful every time.",
-            rating: 5
+            name: "ANKUR AGGARWAL",
+            review: "I've been getting my haircuts at this salon for years, and I can't imagine going anywhere else. The stylists here always give me the perfect cut that suits my face shape and style.",
+            avatar: "A"
         },
         {
-            name: "Mike Chen",
-            review: "Professional staff and great atmosphere. Been coming here for years and never disappointed.",
-            rating: 5
+            name: "JESSICA ARORA",
+            review: "The haircuts here are consistently top-notch, and their attention to detail is unmatched. Plus, the face care treatments are a fantastic way to relax and rejuvenate.",
+            avatar: "J"
         },
         {
-            name: "Emily Rodriguez",
-            review: "The best salon experience I've ever had. Highly recommend their color services!",
-            rating: 5
+            name: "GOURAV ARORA",
+            review: "I can't express how grateful I am to have found this salon. The hairstylists here are not only incredibly talented but also friendly and welcoming.",
+            avatar: "G"
+        },
+        {
+            name: "PRIYA VERMA",
+            review: "This is hands-down the best salon experience I've ever had. The staff is professional, the atmosphere is luxurious, and my hair has never looked better.",
+            avatar: "P"
+        },
+        {
+            name: "RAHUL SINGH",
+            review: "I was hesitant to try a new place, but Geetanjali Salon exceeded all my expectations. My beard trim was perfect, and the service was exceptional.",
+            avatar: "R"
         }
     ];
 
+    const startAutoSlide = () => {
+        if (intervalRef.current) {
+            clearInterval(intervalRef.current);
+        }
+        intervalRef.current = setInterval(() => {
+            setCurrentIndex((prevIndex) => (prevIndex + 1) % testimonials.length);
+        }, 5000);
+    };
+
+    useEffect(() => {
+        startAutoSlide();
+        return () => {
+            if (intervalRef.current) {
+                clearInterval(intervalRef.current);
+            }
+        };
+    }, [testimonials.length]);
+
+    const handleMouseEnter = () => {
+        if (intervalRef.current) {
+            clearInterval(intervalRef.current);
+        }
+    };
+
+    const handleMouseLeave = () => {
+        startAutoSlide();
+    };
+
     return (
-        <section className="luxury-section bg-elegant-bg-light">
-            <div className="luxury-container">
-                <div className="text-center mb-12 animate-slide-up">
-                    <h2 className="font-heading text-gold mb-4">What Our Clients Say</h2>
-                    <p className="text-elegant-gray font-body">Hear from our satisfied customers about their experiences.</p>
+        <section className="py-20 bg-gray-50 overflow-hidden">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                {/* Section Header */}
+                <div className="text-center mb-16">
+                    <p className="text-amber-500 font-lato font-semibold text-sm mb-2 tracking-wider uppercase">
+                        Testimonials
+                    </p>
+                    <h2 className="text-4xl md:text-5xl font-playfair font-bold text-gray-900 mb-8">
+                        What Our Clients Say
+                    </h2>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                    {testimonials.map((testimonial, index) => (
-                        <div key={index} className="luxury-card animate-scale-in">
-                            <div className="flex items-center mb-4">
-                                {[...Array(testimonial.rating)].map((_, i) => (
-                                    <span key={i} className="text-gold text-xl">★</span>
-                                ))}
-                            </div>
-                            <p className="text-elegant-gray mb-4 italic font-body">&quot;{testimonial.review}&quot;</p>
-                            <p className="font-semibold text-black font-heading">- {testimonial.name}</p>
+                {/* Testimonials Carousel */}
+                <div
+                    className="relative max-w-5xl mx-auto"
+                    onMouseEnter={handleMouseEnter}
+                    onMouseLeave={handleMouseLeave}
+                >
+                    <div className="overflow-hidden">
+                        <div
+                            className="flex transition-transform duration-700 ease-in-out"
+                            style={{ transform: `translateX(-${currentIndex * (100 / 3)}%)` }}
+                        >
+                            {testimonials.concat(testimonials).map((testimonial, index) => (
+                                <div
+                                    key={index}
+                                    className="w-full md:w-1/3 flex-shrink-0 p-4"
+                                >
+                                    <div className="bg-white rounded-lg shadow-lg p-6 h-full transform transition-all duration-500 hover:scale-105">
+                                        {/* Large Quote Mark */}
+                                        <div className="text-5xl text-gray-200 font-serif mb-4 leading-none">
+                                            &quot;
+                                        </div>
+
+                                        {/* Testimonial Content */}
+                                        <p className="text-gray-600 font-lato leading-relaxed mb-6 text-base">
+                                            {testimonial.review}
+                                        </p>
+
+                                        {/* Customer Info */}
+                                        <div className="flex items-center">
+                                            <div className="w-12 h-12 bg-gradient-to-r from-amber-500 to-yellow-400 rounded-full flex items-center justify-center text-white font-bold mr-4">
+                                                {testimonial.avatar}
+                                            </div>
+                                            <p className="font-lato font-semibold text-gray-900 text-sm tracking-wider">
+                                                - {testimonial.name}
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            ))}
                         </div>
+                    </div>
+
+                   
+                </div>
+
+                {/* Pagination Dots */}
+                <div className="flex justify-center mt-8 space-x-2">
+                    {testimonials.map((_, index) => (
+                        <button
+                            key={index}
+                            onClick={() => setCurrentIndex(index)}
+                            className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                                index === currentIndex
+                                    ? 'bg-amber-500 scale-125'
+                                    : 'bg-gray-300 hover:bg-gray-400'
+                            }`}
+                        />
                     ))}
                 </div>
             </div>

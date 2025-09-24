@@ -1,4 +1,5 @@
-import React from 'react';
+"use client"
+import React, { useState } from 'react';
 
 const GalleryPage = () => {
     const galleryCategories = [
@@ -48,8 +49,8 @@ const GalleryPage = () => {
         }
     ];
 
-    const [selectedCategory, setSelectedCategory] = React.useState("All");
-    const [lightboxImage, setLightboxImage] = React.useState<number | null>(null);
+    const [selectedCategory, setSelectedCategory] = useState("All");
+    const [lightboxImage, setLightboxImage] = useState<number | null>(null);
 
     const categories = ["All", ...galleryCategories.map(cat => cat.name)];
 
