@@ -217,14 +217,23 @@ const WhyChooseUs: React.FC = () => {
                     </div>
                 </div>
 
-                {/* Luxury Products Box - Below "Why Choose Us" - Only Image */}
-                <div className="md:col-span-1 flex items-center justify-center overflow-hidden">
+                {/* Luxury Products Box - Below "Why Choose Us" - Image Hover Effect */}
+                <div className="md:col-span-1 relative overflow-hidden group cursor-pointer">
+                    {/* First Image - Default */}
                     <Image
                         src="/whyus/image.png"
                         alt="Luxury Beauty Products"
                         width={400}
                         height={400}
-                        className="object-cover w-full h-full min-h-[300px] md:min-h-[400px]"
+                        className="object-cover w-full h-full min-h-[300px] md:min-h-[400px] transition-transform duration-500 ease-in-out group-hover:translate-x-[-100%]"
+                    />
+                    {/* Second Image - On Hover */}
+                    <Image
+                        src="/whyus/image1.png"
+                        alt="Luxury Beauty Products Hover"
+                        width={400}
+                        height={400}
+                        className="object-cover w-full h-full min-h-[300px] md:min-h-[400px] absolute top-0 left-0 transition-transform duration-500 ease-in-out translate-x-[100%] group-hover:translate-x-0"
                     />
                 </div>
             </div>
