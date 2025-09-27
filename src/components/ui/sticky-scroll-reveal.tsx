@@ -71,52 +71,32 @@ export const StickyScroll = ({
       animate={{
         backgroundColor: backgroundColors[activeCard % backgroundColors.length],
       }}
-      className="relative flex h-[36rem] justify-center space-x-10 overflow-y-auto rounded-md p-10"
+      className="relative flex h-[36rem] justify-center space-x-10 overflow-y-auto rounded-md p-10 hide-scrollbar"
       ref={ref}
     >
-      {/* Vertical Golden Progress Line */}
-      <div className="absolute left-8 top-10 bottom-10 w-1 bg-gray-300/50 rounded-full shadow-inner">
-        <motion.div
-          className="w-full bg-gradient-to-b from-gold via-yellow-500 to-yellow-600 rounded-full origin-top shadow-lg"
-          style={{ scaleY: scrollYProgress }}
-        />
-      </div>
-
+      {/* Main Content */}
       <div className="div relative flex items-start px-4 pl-16">
         <div className="max-w-2xl">
           {content.map((item, index) => (
             <div key={item.title + index} className="my-20">
               <motion.h2
-                initial={{
-                  opacity: 0,
-                }}
-                animate={{
-                  opacity: activeCard === index ? 1 : 0.3,
-                }}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: activeCard === index ? 1 : 0.3 }}
                 className="text-2xl font-bold text-black font-playfair"
               >
                 {item.title}
               </motion.h2>
               <motion.p
-                initial={{
-                  opacity: 0,
-                }}
-                animate={{
-                  opacity: activeCard === index ? 1 : 0.3,
-                }}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: activeCard === index ? 1 : 0.95 }}
                 className="text-lg mt-10 max-w-sm text-black font-lato"
               >
                 {item.description}
               </motion.p>
-
               {/* Action Button */}
               <motion.div
-                initial={{
-                  opacity: 0,
-                }}
-                animate={{
-                  opacity: activeCard === index ? 1 : 0.3,
-                }}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: activeCard === index ? 1 : 0.95 }}
                 className="mt-6"
               >
                 {item.actionButton}
@@ -157,7 +137,7 @@ export const StickyScroll = ({
       <div
         style={{ background: backgroundGradient }}
         className={cn(
-          "sticky top-10 hidden h-80 w-96 overflow-hidden rounded-md bg-white lg:block",
+          "sticky top-10 hidden h-80 w-96 rounded-md bg-white lg:block",
           contentClassName
         )}
       >

@@ -126,3 +126,6 @@ body {
 .animate-blink {
   animation: blink 2s ease-in-out infinite;
 }
+
+.hide-scrollbar::-webkit-scrollbar { display: none; }
+.hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }

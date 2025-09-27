@@ -10,179 +10,151 @@ const StatsSection = () => {
         awards: 0
     });
 
-    // Continuous animated counter effect
+    const [isVisible, setIsVisible] = useState(false);
+
+    // Intersection Observer for animation trigger
     useEffect(() => {
-        const baseValues = {
+        const observer = new IntersectionObserver(
+            (entries) => {
+                if (entries[0].isIntersecting) {
+                    setIsVisible(true);
+                }
+            },
+            { threshold: 0.3 }
+        );
+
+        const element = document.getElementById('stats-section');
+        if (element) {
+            observer.observe(element);
+        }
+
+        return () => {
+            if (element) {
+                observer.unobserve(element);
+            }
+        };
+    }, []);
+
+    // Enhanced counter animation
+    useEffect(() => {
+        if (!isVisible) return;
+
+        const targetValues = {
             locations: 180,
             artists: 4000,
             experience: 3,
             awards: 15
         };
 
-        const variationRanges = {
-            locations: { min: 150, max: 200 },
-            artists: { min: 3800, max: 4200 },
-            experience: { min: 3, max: 3 }, // Keep experience constant at 3
-            awards: { min: 12, max: 18 }
-        };
+        const animationDuration = 2500;
+        const steps = 60;
+        const stepTime = animationDuration / steps;
 
-        const animationDuration = 3000; // 3 seconds for each cycle
-        const updateInterval = 50; // Update every 50ms for smooth animation
+        Object.keys(targetValues).forEach((key) => {
+            const target = targetValues[key as keyof typeof targetValues];
+            let current = 0;
+            let step = 0;
 
-        const intervals = Object.keys(baseValues).map((key) => {
-            const range = variationRanges[key as keyof typeof variationRanges];
-            let currentTarget = baseValues[key as keyof typeof baseValues];
-            let currentValue = 0;
-            let animationProgress = 0;
-
-            // Start with count-up animation to base value
-            const intervalId = setInterval(() => {
-                if (animationProgress === 0) {
-                    // Initial count-up to base value
-                    currentValue += (currentTarget / (animationDuration / updateInterval));
-                    if (currentValue >= currentTarget) {
-                        currentValue = currentTarget;
-                        animationProgress = 1;
-
-                        // Set new random target for continuous animation
-                        if (key !== 'experience') {
-                            currentTarget = Math.floor(Math.random() * (range.max - range.min + 1)) + range.min;
-                        }
-                    }
-                } else {
-                    // Continuous smooth variation
-                    if (key !== 'experience') {
-                        const step = Math.abs(currentTarget - currentValue) / (animationDuration / updateInterval);
-
-                        if (currentValue < currentTarget) {
-                            currentValue += step;
-                            if (currentValue >= currentTarget) {
-                                currentValue = currentTarget;
-                                // Set new random target
-                                setTimeout(() => {
-                                    currentTarget = Math.floor(Math.random() * (range.max - range.min + 1)) + range.min;
-                                }, 1000);
-                            }
-                        } else if (currentValue > currentTarget) {
-                            currentValue -= step;
-                            if (currentValue <= currentTarget) {
-                                currentValue = currentTarget;
-                                // Set new random target
-                                setTimeout(() => {
-                                    currentTarget = Math.floor(Math.random() * (range.max - range.min + 1)) + range.min;
-                                }, 1000);
-                            }
-                        }
-                    }
-                }
+            const timer = setInterval(() => {
+                step++;
+                const progress = step / steps;
+                const easedProgress = 1 - Math.pow(1 - progress, 3); // Ease-out cubic
+                current = Math.floor(target * easedProgress);
 
                 setCounters((prev) => ({
                     ...prev,
-                    [key]: Math.floor(currentValue)
+                    [key]: current
                 }));
-            }, updateInterval);
 
-            return intervalId;
+                if (step >= steps) {
+                    clearInterval(timer);
+                }
+            }, stepTime);
         });
-
-        return () => {
-            intervals.forEach((interval) => clearInterval(interval));
-        };
-    }, []);
+    }, [isVisible]);
 
     const stats = [
         {
-            icon: (
-                <svg className="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" />
-                </svg>
-            ),
             value: counters.locations,
             suffix: "+",
-            label: "Locations Pan India",
-            color: "text-[#d4af37]"
+            label: "Premium Locations",
+            sublabel: "Across India"
         },
         {
-            icon: (
-                <svg className="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M16 4c0-1.11.89-2 2-2s2 .89 2 2-.89 2-2 2-2-.89-2-2zm4 18v-6h2.5l-2.54-7.63A2.99 2.99 0 0 0 17.09 7c-.8 0-1.54.37-2.01.99L12 11.9 8.92 7.99A2.99 2.99 0 0 0 6.01 7c-.8 0-1.54.37-2.01.99L1.46 16H4v6h4v-6h2v6h4v-6h2v6h4z" />
-                </svg>
-            ),
             value: counters.artists,
             suffix: "+",
-            label: "Expert Artists & Technicians",
-            color: "text-black"
+            label: "Expert Artists",
+            sublabel: "& Technicians"
         },
         {
-            icon: (
-                <div className="flex justify-center items-center space-x-1">
-                    <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                        <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
-                    </svg>
-                    <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                        <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
-                    </svg>
-                    <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                        <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
-                    </svg>
-                </div>
-            ),
             value: counters.experience,
             suffix: "",
-            label: "Decades of Excellence",
-            color: "text-gray-600"
+            label: "Decades of",
+            sublabel: "Excellence"
         },
         {
-            icon: (
-                <svg className="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M5 16L3 5h5.5l1.5 3h6L19 5h2l-2 11H5zm7-2.5c.83 0 1.5-.67 1.5-1.5s-.67-1.5-1.5-1.5-1.5.67-1.5 1.5.67 1.5 1.5 1.5z" />
-                </svg>
-            ),
             value: counters.awards,
             suffix: "+",
-            label: "Global Awards & Recognition",
-            color: "text-[#d4af37]"
+            label: "Global Awards",
+            sublabel: "& Recognition"
         }
     ];
 
     return (
-        <section className="bg-gradient-to-r from-gray-50 to-gray-100 py-16">
-            <div className="luxury-container">
-                <div className="grid grid-cols-2 lg:grid-cols-4 gap-0">
+        <section
+            id="stats-section"
+            className="relative py-20 bg-gradient-to-br from-gray-50 via-white to-gray-100 overflow-hidden"
+        >
+            {/* Background Pattern */}
+            <div className="absolute inset-0 opacity-10">
+                <div className="absolute inset-0" style={{
+                    backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23d4af37' fill-opacity='1'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`
+                }}></div>
+            </div>
+
+            {/* Floating Elements */}
+            <div className="absolute top-20 left-10 w-20 h-20 bg-gradient-to-r from-gold/20 to-yellow-400/20 rounded-full blur-xl animate-pulse"></div>
+            <div className="absolute bottom-20 right-10 w-32 h-32 bg-gradient-to-r from-gold/10 to-yellow-400/10 rounded-full blur-2xl animate-pulse" style={{ animationDelay: '1s' }}></div>
+
+            <div className="luxury-container relative z-10">
+                {/* Section Header */}
+                <div className="text-center mb-16">
+                    <div className="inline-block">
+                        <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold font-serif text-gray-900 mb-4 tracking-tight">
+                            OUR ACHIEVEMENTS
+                        </h2>
+                        <div className="w-24 h-1 bg-gold rounded-full mx-auto"></div>
+                    </div>
+                </div>
+
+                {/* Stats Grid - Simple, no cards, no icons, all text same color */}
+                <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-8">
                     {stats.map((stat, index) => (
                         <div
                             key={index}
-                            className="text-center group hover:transform hover:scale-105 transition-all duration-300"
+                            className="p-4 text-center"
                         >
-                            {/* Icon */}
-                            <div
-                                className={`${stat.color} mb-2 flex justify-center group-hover:animate-bounce`}
-                            >
-                                {stat.icon}
-                            </div>
-
-                            {/* Number */}
-                            <div className="mb-1 flex justify-center items-baseline">
-                                <span className="text-4xl lg:text-5xl font-bold text-black">
+                            <div className="mb-2">
+                                <span className="text-5xl lg:text-6xl font-extrabold font-serif text-gray-900 tracking-tight">
                                     {stat.value.toLocaleString()}
                                 </span>
-                                <span className="text-2xl lg:text-3xl font-bold text-gray-600">
+                                <span className="text-3xl lg:text-4xl font-bold font-serif text-gray-900 ml-1">
                                     {stat.suffix}
                                 </span>
                             </div>
-
-                            {/* Label */}
-                            <p className="text-sm lg:text-base text-gray-700 font-medium tracking-wide leading-tight px-2">
-                                {stat.label}
-                            </p>
+                            <div className="space-y-1">
+                                <p className="text-lg font-semibold font-serif text-gray-900 tracking-wide">
+                                    {stat.label}
+                                </p>
+                                <p className="text-sm font-medium font-serif text-gray-900">
+                                    {stat.sublabel}
+                                </p>
+                            </div>
                         </div>
                     ))}
                 </div>
 
-                {/* Bottom accent line */}
-                <div className="mt-12 flex justify-center">
-                    <div className="w-24 h-1 bg-gradient-to-r from-black via-[#d4af37] to-gray-600 rounded-full"></div>
-                </div>
+             
             </div>
         </section>
     );

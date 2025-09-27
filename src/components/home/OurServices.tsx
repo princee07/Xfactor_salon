@@ -97,29 +97,28 @@ const content = [
 
 function OurServices() {
     return (
-        <section className="py-20 bg-gradient-to-b from-gray-50 to-white relative overflow-hidden">
+        <section className="py-6 md:py-10 bg-gradient-to-b from-gray-50 to-white relative overflow-hidden">
             {/* Section Header */}
-            <div className="luxury-container relative z-10 mb-16">
+            <div className="luxury-container relative z-10 mb-8 px-4 md:px-0">
                 <div className="text-center">
-                    <h2 className="text-4xl md:text-6xl font-script text-gold mb-4 italic">
+                    <h2 className="text-3xl md:text-6xl font-script text-gold mb-4 italic">
                         Welcome
                     </h2>
-                    <h3 className="text-4xl md:text-5xl font-playfair font-bold text-gray-900 mb-6">
+                    <h3 className="text-3xl md:text-5xl font-playfair font-bold text-gray-900 mb-4">
                         OUR SERVICES
                     </h3>
-                    <div className="w-32 h-1 bg-gradient-to-r from-transparent via-gold to-transparent mx-auto mb-8"></div>
-                    <p className="text-lg text-gray-600 max-w-3xl mx-auto font-lato leading-relaxed">
+                    <div className="w-24 md:w-32 h-1 bg-gradient-to-r from-transparent via-gold to-transparent mx-auto mb-4"></div>
+                    <p className="text-base md:text-lg text-gray-600 max-w-3xl mx-auto font-lato leading-relaxed mt-2">
                         The complete salon experience with our wide range of services brings out the best of your natural beauty.
                     </p>
                 </div>
             </div>
 
-            {/* StickyScroll Component */}
-            <div className="w-full relative">
-                <StickyScroll content={content} />
+            {/* StickyScroll Component - Full width, lifted content higher */}
+            <div className="w-full relative px-0 mt-0 md:mt-[-80px]">
+                <StickyScroll content={content} contentClassName="hide-scrollbar lg:h-[28rem] lg:max-h-[28rem]" />
             </div>
 
-           
         </section>
     );
 }

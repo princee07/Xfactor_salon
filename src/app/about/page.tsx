@@ -1,4 +1,5 @@
 import React from 'react';
+import Image from 'next/image';
 
 const AboutPage = () => {
     return (
@@ -25,16 +26,26 @@ const AboutPage = () => {
                             <p className="text-gray-600 mb-4">
                                 Founded with a passion for beauty and style, XFactor Salon has been serving our
                                 community for over a decade. Our journey began with a simple vision: to create
-                                a space where clients can transform and feel their absolute best.
+                                a space where clients can transform and feel their absolute best. Over the years, we have grown into a trusted destination for those seeking luxury, relaxation, and transformation.
                             </p>
                             <p className="text-gray-600 mb-4">
                                 We believe that every client deserves personalized attention and exceptional
                                 service. Our team of skilled professionals stays updated with the latest trends
-                                and techniques to ensure you leave our salon feeling confident and beautiful.
+                                and techniques to ensure you leave our salon feeling confident and beautiful. From innovative hair styling and vibrant coloring to rejuvenating skin treatments and glamorous makeup, we offer a complete range of services tailored to your unique needs.
+                            </p>
+                            <p className="text-gray-600 mb-4">
+                                At XFactor Salon, we are committed to using only the highest quality products and providing a welcoming atmosphere. Our mission is to help you look and feel your best, every single visit.
                             </p>
                         </div>
-                        <div className="bg-gray-200 h-64 rounded-lg flex items-center justify-center">
-                            <span className="text-gray-500">Salon Interior Image</span>
+                        <div className="w-full h-80 sm:h-96 lg:h-[22rem] rounded-lg overflow-hidden flex items-center justify-center ">
+                            <Image
+                                src="/about/Xfactor.png"
+                                alt="XFactor Salon Interior"
+                                width={600}
+                                height={400}
+                                className="object-contain w-full h-full rounded-lg"
+                                priority
+                            />
                         </div>
                     </div>
                 </div>

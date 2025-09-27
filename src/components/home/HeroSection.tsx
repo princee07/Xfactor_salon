@@ -10,7 +10,9 @@ const HeroSection = () => {
         '/hero/image1.png',
         '/hero/image2.png',
         '/hero/image3.png',
-        '/hero/image4.png'
+        '/hero/image4.png',
+        '/hero/image5.png',
+        '/hero/image6.png'
     ];
 
     useEffect(() => {
@@ -22,34 +24,34 @@ const HeroSection = () => {
     }, [images.length]);
 
     return (
-        <section className="relative h-screen overflow-hidden">
+        <section className="relative min-h-[85vh] md:min-h-[92vh] w-full overflow-hidden">
             {/* Background Image Slider */}
-            <div className="absolute inset-0">
+            <div className="absolute inset-0 w-full h-full">
                 {images.map((image, index) => (
                     <div
                         key={index}
-                        className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${index === currentImage ? 'opacity-100' : 'opacity-0'
+                        className={`absolute inset-0 w-full h-full transition-opacity duration-1000 ease-in-out ${index === currentImage ? 'opacity-100' : 'opacity-0'
                             }`}
                     >
                         <Image
                             src={image}
                             alt={`Hero image ${index + 1}`}
                             fill
-                            className="object-cover"
+                            className="object-cover w-full h-full"
                             priority={index === 0}
                             quality={90}
                             sizes="100vw"
                             onError={() => console.error(`Failed to load image: ${image}`)}
                         />
                         {/* Dark overlay for better text readability */}
-
+                        <div className="absolute inset-0 "></div>
                     </div>
                 ))}
             </div>
 
             {/* Content */}
-            <div className="relative z-10 h-full flex items-center justify-center text-white">
-                <div className="luxury-container">
+            <div className="relative z-10 h-full min-h-[85vh] md:min-h-[92vh] flex items-center justify-center text-white">
+                <div className="luxury-container px-4">
                     <div className="text-center animate-fade-in">
                         <h1 className="text-5xl md:text-7xl font-playfair font-bold mb-6 drop-shadow-lg">
                             XFactor Salon
