@@ -121,7 +121,7 @@ const FAQPage = () => {
                                     {category.questions.map((faq, faqIndex) => (
                                         <div key={faqIndex} className="border-b border-gray-100 pb-6 last:border-b-0 last:pb-0">
                                             <h3 className="text-lg font-semibold text-gray-900 mb-3 flex items-start">
-                                                <span className="bg-pink-100 text-pink-600 rounded-full h-6 w-6 flex items-center justify-center text-sm font-bold mr-3 mt-0.5 flex-shrink-0">
+                                                <span className="bg-[#d4af37]/20 text-[#d4af37] rounded-full h-6 w-6 flex items-center justify-center text-sm font-bold mr-3 mt-0.5 flex-shrink-0">
                                                     Q
                                                 </span>
                                                 {faq.question}
@@ -151,44 +151,44 @@ const FAQPage = () => {
                         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
                             {/* Phone */}
                             <div className="text-center">
-                                <div className="bg-pink-100 h-16 w-16 rounded-full mx-auto mb-4 flex items-center justify-center">
-                                    <svg className="h-8 w-8 text-pink-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <div className="bg-[#d4af37]/20 h-16 w-16 rounded-full mx-auto mb-4 flex items-center justify-center">
+                                    <svg className="h-8 w-8 text-[#d4af37]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
                                     </svg>
                                 </div>
                                 <h3 className="text-lg font-semibold text-gray-900 mb-2">Call Us</h3>
                                 <p className="text-gray-600 mb-3">Speak directly with our team</p>
-                                <p className="text-pink-600 font-semibold">(555) 123-4567</p>
+                                <p className="text-[#d4af37] font-semibold">(555) 123-4567</p>
                             </div>
 
                             {/* Email */}
                             <div className="text-center">
-                                <div className="bg-pink-100 h-16 w-16 rounded-full mx-auto mb-4 flex items-center justify-center">
-                                    <svg className="h-8 w-8 text-pink-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <div className="bg-[#d4af37]/20 h-16 w-16 rounded-full mx-auto mb-4 flex items-center justify-center">
+                                    <svg className="h-8 w-8 text-[#d4af37]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                                     </svg>
                                 </div>
                                 <h3 className="text-lg font-semibold text-gray-900 mb-2">Email Us</h3>
                                 <p className="text-gray-600 mb-3">Send us your questions</p>
-                                <p className="text-pink-600 font-semibold">info@xfactorsalon.com</p>
+                                <p className="text-[#d4af37] font-semibold">info@xfactorsalon.com</p>
                             </div>
 
                             {/* Visit */}
                             <div className="text-center">
-                                <div className="bg-pink-100 h-16 w-16 rounded-full mx-auto mb-4 flex items-center justify-center">
-                                    <svg className="h-8 w-8 text-pink-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <div className="bg-[#d4af37]/20 h-16 w-16 rounded-full mx-auto mb-4 flex items-center justify-center">
+                                    <svg className="h-8 w-8 text-[#d4af37]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
                                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
                                     </svg>
                                 </div>
                                 <h3 className="text-lg font-semibold text-gray-900 mb-2">Visit Us</h3>
                                 <p className="text-gray-600 mb-3">Stop by any location</p>
-                                <p className="text-pink-600 font-semibold">See Locations</p>
+                                <p className="text-[#d4af37] font-semibold">See Locations</p>
                             </div>
                         </div>
 
                         <div className="mt-8">
-                            <button className="bg-pink-500 hover:bg-pink-600 text-white px-8 py-3 rounded-full font-semibold transition-colors duration-200">
+                            <button className="bg-[#d4af37] hover:bg-[#b8941f] text-white px-8 py-3 rounded-full font-semibold transition-colors duration-200">
                                 Contact Us
                             </button>
                         </div>

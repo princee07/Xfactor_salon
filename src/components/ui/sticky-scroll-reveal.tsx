@@ -12,7 +12,7 @@ const backgroundColors: string[] = [
 
 const linearGradients: string[] = [
   "linear-gradient(to bottom right, #06b6d4, #10b981)", // cyan-500 to emerald-500
-  "linear-gradient(to bottom right, #ec4899, #6366f1)", // pink-500 to indigo-500
+  "linear-gradient(to bottom right, #d4af37, #000000)", // golden to black
   "linear-gradient(to bottom right, #f97316, #eab308)", // orange-500 to yellow-500
 ];
 

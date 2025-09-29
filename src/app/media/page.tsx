@@ -162,7 +162,7 @@ const MediaPage = () => {
             {/* Featured Media */}
             <section className="py-16">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <div className="bg-gradient-to-r from-pink-500 to-purple-600 rounded-lg p-8 text-white mb-16">
+                    <div className="bg-gradient-to-r from-[#d4af37] to-[#b8941f] rounded-lg p-8 text-white mb-16">
                         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
                             <div>
                                 <h2 className="text-3xl font-bold mb-4">Featured in City Style Magazine</h2>
@@ -170,7 +170,7 @@ const MediaPage = () => {
                                     &quot;XFactor Salon continues to set the standard for excellence in the beauty industry
                                     with their innovative techniques and exceptional customer service.&quot;
                                 </p>
-                                <button className="bg-white text-pink-600 hover:bg-gray-50 px-6 py-3 rounded-full font-semibold transition-colors duration-200">
+                                <button className="bg-white text-[#d4af37] hover:bg-gray-50 px-6 py-3 rounded-full font-semibold transition-colors duration-200">
                                     Read Full Article
                                 </button>
                             </div>
@@ -193,7 +193,7 @@ const MediaPage = () => {
                                             <div className="bg-gray-200 h-48 flex items-center justify-center">
                                                 {item.type === 'video' ? (
                                                     <div className="text-center">
-                                                        <div className="bg-pink-500 h-16 w-16 rounded-full mx-auto mb-2 flex items-center justify-center">
+                                                        <div className="bg-[#d4af37] h-16 w-16 rounded-full mx-auto mb-2 flex items-center justify-center">
                                                             <svg className="h-8 w-8 text-white" fill="currentColor" viewBox="0 0 20 20">
                                                                 <path d="M6.3 2.841A1.5 1.5 0 004 4.11V15.89a1.5 1.5 0 002.3 1.269l9.344-5.89a1.5 1.5 0 000-2.538L6.3 2.84z" />
                                                             </svg>
@@ -216,11 +216,11 @@ const MediaPage = () => {
                                                 </h3>
 
                                                 {item.type !== 'video' && item.type !== 'social' && (
-                                                    <p className="text-sm text-pink-600 font-medium mb-2">{(item as ArticleItem).source}</p>
+                                                    <p className="text-sm text-[#d4af37] font-medium mb-2">{(item as ArticleItem).source}</p>
                                                 )}
 
                                                 {item.type === 'social' && (
-                                                    <p className="text-sm text-pink-600 font-medium mb-2">{(item as SocialItem).platform}</p>
+                                                    <p className="text-sm text-[#d4af37] font-medium mb-2">{(item as SocialItem).platform}</p>
                                                 )}
 
                                                 {(item.type === 'article' || item.type === 'interview') && (
@@ -241,7 +241,7 @@ const MediaPage = () => {
                                                     {item.type === 'social' && <span>{(item as SocialItem).engagement}</span>}
                                                 </div>
 
-                                                <button className="mt-4 w-full bg-pink-500 hover:bg-pink-600 text-white py-2 rounded-full text-sm font-medium transition-colors duration-200">
+                                                <button className="mt-4 w-full bg-[#d4af37] hover:bg-[#b8941f] text-white py-2 rounded-full text-sm font-medium transition-colors duration-200">
                                                     {item.type === 'video' ? 'Watch Video' :
                                                         item.type === 'social' ? 'View Post' : 'Read More'}
                                                 </button>
@@ -274,7 +274,7 @@ const MediaPage = () => {
                                 </div>
                                 <h3 className="font-semibold text-gray-900 mb-2">{award.title}</h3>
                                 <p className="text-sm text-gray-600 mb-1">{award.organization}</p>
-                                <p className="text-sm text-pink-600 font-medium">{award.year}</p>
+                                <p className="text-sm text-[#d4af37] font-medium">{award.year}</p>
                             </div>
                         ))}
                     </div>
@@ -293,12 +293,12 @@ const MediaPage = () => {
 
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                         {/* Instagram */}
-                        <div className="bg-gradient-to-br from-purple-400 to-pink-400 p-6 rounded-lg text-white text-center">
+                        <div className="bg-gradient-to-br from-[#d4af37] to-[#b8941f] p-6 rounded-lg text-white text-center">
                             <div className="text-4xl mb-4">📸</div>
                             <h3 className="text-xl font-semibold mb-2">Instagram</h3>
                             <p className="mb-4 opacity-90">Daily transformations & style inspiration</p>
                             <p className="text-lg font-bold mb-4">25.6K Followers</p>
-                            <button className="bg-white text-purple-600 hover:bg-gray-50 px-4 py-2 rounded-full font-medium transition-colors duration-200">
+                            <button className="bg-white text-[#d4af37] hover:bg-gray-50 px-4 py-2 rounded-full font-medium transition-colors duration-200">
                                 Follow
                             </button>
                         </div>
@@ -315,12 +315,12 @@ const MediaPage = () => {
                         </div>
 
                         {/* Facebook */}
-                        <div className="bg-gradient-to-br from-blue-600 to-blue-400 p-6 rounded-lg text-white text-center">
+                        <div className="bg-gradient-to-br from-[#d4af37] to-[#b8941f] p-6 rounded-lg text-white text-center">
                             <div className="text-4xl mb-4">👍</div>
                             <h3 className="text-xl font-semibold mb-2">Facebook</h3>
                             <p className="mb-4 opacity-90">Updates, events & community</p>
                             <p className="text-lg font-bold mb-4">8.9K Likes</p>
-                            <button className="bg-white text-blue-600 hover:bg-gray-50 px-4 py-2 rounded-full font-medium transition-colors duration-200">
+                            <button className="bg-white text-black hover:bg-gray-50 px-4 py-2 rounded-full font-medium transition-colors duration-200">
                                 Like
                             </button>
                         </div>
@@ -342,7 +342,7 @@ const MediaPage = () => {
             {/* Newsletter Signup */}
             <section className="bg-white py-16">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <div className="bg-pink-50 rounded-lg p-8 text-center">
+                    <div className="bg-gray-50 rounded-lg p-8 text-center">
                         <h2 className="text-3xl font-bold text-gray-900 mb-4">Stay in the Loop</h2>
                         <p className="text-gray-600 mb-6 max-w-2xl mx-auto">
                             Subscribe to our newsletter for the latest news, beauty tips, exclusive offers,
@@ -353,9 +353,9 @@ const MediaPage = () => {
                             <input
                                 type="email"
                                 placeholder="Enter your email"
-                                className="flex-1 px-4 py-3 rounded-full border border-gray-300 focus:outline-none focus:ring-2 focus:ring-pink-500"
+                                className="flex-1 px-4 py-3 rounded-full border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#d4af37]"
                             />
-                            <button className="bg-pink-500 hover:bg-pink-600 text-white px-6 py-3 rounded-full font-semibold transition-colors duration-200">
+                            <button className="bg-[#d4af37] hover:bg-[#b8941f] text-white px-6 py-3 rounded-full font-semibold transition-colors duration-200">
                                 Subscribe
                             </button>
                         </div>

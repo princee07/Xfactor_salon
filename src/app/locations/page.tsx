@@ -59,8 +59,8 @@ const LocationsPage = () => {
 
                                     {/* Address */}
                                     <div className="flex items-start mb-3">
-                                        <div className="bg-pink-100 p-2 rounded-full mr-3">
-                                            <svg className="h-5 w-5 text-pink-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <div className="bg-gray-100 p-2 rounded-full mr-3">
+                                            <svg className="h-5 w-5 text-[#d4af37]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
                                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
                                             </svg>
@@ -72,8 +72,8 @@ const LocationsPage = () => {
 
                                     {/* Phone */}
                                     <div className="flex items-center mb-4">
-                                        <div className="bg-pink-100 p-2 rounded-full mr-3">
-                                            <svg className="h-5 w-5 text-pink-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <div className="bg-gray-100 p-2 rounded-full mr-3">
+                                            <svg className="h-5 w-5 text-[#d4af37]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
                                             </svg>
                                         </div>
@@ -97,7 +97,7 @@ const LocationsPage = () => {
                                             {location.services.map((service, index) => (
                                                 <span
                                                     key={index}
-                                                    className="bg-pink-100 text-pink-800 px-3 py-1 rounded-full text-sm"
+                                                    className="bg-gray-100 text-gray-800 px-3 py-1 rounded-full text-sm"
                                                 >
                                                     {service}
                                                 </span>
@@ -107,10 +107,10 @@ const LocationsPage = () => {
 
                                     {/* Actions */}
                                     <div className="flex space-x-3">
-                                        <button className="bg-pink-500 hover:bg-pink-600 text-white px-6 py-2 rounded-full text-sm font-medium transition-colors duration-200">
+                                        <button className="bg-[#d4af37] hover:bg-[#b8941f] text-white px-6 py-2 rounded-full text-sm font-medium transition-colors duration-200">
                                             Book Appointment
                                         </button>
-                                        <button className="border border-pink-500 text-pink-500 hover:bg-pink-50 px-6 py-2 rounded-full text-sm font-medium transition-colors duration-200">
+                                        <button className="border border-[#d4af37] text-[#d4af37] hover:bg-gray-50 px-6 py-2 rounded-full text-sm font-medium transition-colors duration-200">
                                             Get Directions
                                         </button>
                                     </div>

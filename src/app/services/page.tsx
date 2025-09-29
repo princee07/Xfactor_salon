@@ -158,7 +158,7 @@ const ServicesPage = () => {
                                         <div key={serviceIndex} className="bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition-shadow duration-200">
                                             <div className="flex justify-between items-start mb-4">
                                                 <h3 className="text-xl font-semibold text-gray-900">{service.name}</h3>
-                                                <span className="text-pink-600 font-bold text-lg">{service.price}</span>
+                                                <span className="text-[#d4af37] font-bold text-lg">{service.price}</span>
                                             </div>
 
                                             <p className="text-gray-600 mb-4">{service.description}</p>
@@ -171,7 +171,7 @@ const ServicesPage = () => {
                                                     {service.duration}
                                                 </div>
 
-                                                <button className="bg-pink-500 hover:bg-pink-600 text-white px-4 py-2 rounded-full text-sm font-medium transition-colors duration-200">
+                                                <button className="bg-[#d4af37] hover:bg-[#b8941f] text-white px-4 py-2 rounded-full text-sm font-medium transition-colors duration-200">
                                                     Book Now
                                                 </button>
                                             </div>
@@ -195,29 +195,29 @@ const ServicesPage = () => {
                     </div>
 
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                        <div className="bg-gradient-to-br from-pink-50 to-purple-50 rounded-lg p-6 border border-pink-200">
+                        <div className="bg-gradient-to-br from-gray-50 to-gray-100 rounded-lg p-6 border border-gray-200">
                             <h3 className="text-xl font-semibold text-gray-900 mb-4">Bridal Package</h3>
                             <p className="text-gray-600 mb-4">Complete bridal preparation including hair, makeup, and nails</p>
-                            <p className="text-2xl font-bold text-pink-600 mb-4">$299</p>
-                            <button className="w-full bg-pink-500 hover:bg-pink-600 text-white py-2 rounded-full font-medium transition-colors duration-200">
+                            <p className="text-2xl font-bold text-[#d4af37] mb-4">$299</p>
+                            <button className="w-full bg-[#d4af37] hover:bg-[#b8941f] text-white py-2 rounded-full font-medium transition-colors duration-200">
                                 Learn More
                             </button>
                         </div>
 
-                        <div className="bg-gradient-to-br from-pink-50 to-purple-50 rounded-lg p-6 border border-pink-200">
+                        <div className="bg-gradient-to-br from-gray-50 to-gray-100 rounded-lg p-6 border border-gray-200">
                             <h3 className="text-xl font-semibold text-gray-900 mb-4">Spa Day Package</h3>
                             <p className="text-gray-600 mb-4">Relaxing day package with facial, manicure, and pedicure</p>
-                            <p className="text-2xl font-bold text-pink-600 mb-4">$179</p>
-                            <button className="w-full bg-pink-500 hover:bg-pink-600 text-white py-2 rounded-full font-medium transition-colors duration-200">
+                            <p className="text-2xl font-bold text-[#d4af37] mb-4">$179</p>
+                            <button className="w-full bg-[#d4af37] hover:bg-[#b8941f] text-white py-2 rounded-full font-medium transition-colors duration-200">
                                 Learn More
                             </button>
                         </div>
 
-                        <div className="bg-gradient-to-br from-pink-50 to-purple-50 rounded-lg p-6 border border-pink-200">
+                        <div className="bg-gradient-to-br from-gray-50 to-gray-100 rounded-lg p-6 border border-gray-200">
                             <h3 className="text-xl font-semibold text-gray-900 mb-4">Hair Transformation</h3>
                             <p className="text-gray-600 mb-4">Complete hair makeover with cut, color, and treatment</p>
-                            <p className="text-2xl font-bold text-pink-600 mb-4">$199</p>
-                            <button className="w-full bg-pink-500 hover:bg-pink-600 text-white py-2 rounded-full font-medium transition-colors duration-200">
+                            <p className="text-2xl font-bold text-[#d4af37] mb-4">$199</p>
+                            <button className="w-full bg-[#d4af37] hover:bg-[#b8941f] text-white py-2 rounded-full font-medium transition-colors duration-200">
                                 Learn More
                             </button>
                         </div>
