@@ -1,18 +1,15 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import { usePathname } from 'next/navigation';
 import Link from "next/link";
-import Image from "next/image";
+import Image from "next/image"; 
 
 const Header = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const [currentBulletinIndex, setCurrentBulletinIndex] = useState(0);
-    // start hidden by default; we'll show on homepage or when scrolling down
-    const [showBulletin, setShowBulletin] = useState(false);
-    const [bulletinVisible, setBulletinVisible] = useState(false);
-    const pathname = usePathname();
-    const lastScrollY = React.useRef(0);
+    // always show the bulletin
+    const showBulletin = true;
+    const [bulletinFading, setBulletinFading] = useState(false);
 
     // Bulletin content that will auto-change (festival season)
     const bulletinContent = [
@@ -23,59 +20,21 @@ const Header = () => {
         "🌟 Celebrate the season with XFactor Salon — Book now!"
     ];
 
-    // Auto-change bulletin content with fade animation
+    // Auto-change bulletin content with a brief inner fade animation
     useEffect(() => {
         const interval = setInterval(() => {
-            setBulletinVisible(false); // Start fade-out
+            // fade out inner text
+            setBulletinFading(true);
             setTimeout(() => {
-                setCurrentBulletinIndex((prevIndex) =>
-                    (prevIndex + 1) % bulletinContent.length
-                );
-                setBulletinVisible(true); // Start fade-in
+                setCurrentBulletinIndex((prevIndex) => (prevIndex + 1) % bulletinContent.length);
+                // fade in
+                setBulletinFading(false);
             }, 300); // Delay to allow fade-out before content change
         }, 8000); // Change every 8 seconds
         return () => clearInterval(interval);
     }, [bulletinContent.length]);
 
-    // Show/hide bulletin bar based on scroll direction with smooth transition
-    useEffect(() => {
-        let hideTimeout: NodeJS.Timeout | undefined;
-        const handleScroll = () => {
-            const currentScrollY = window.scrollY;
-            if (currentScrollY > lastScrollY.current) {
-                // Scrolling down: always show the bulletin (do not hide on scroll down)
-                setShowBulletin(true);
-                setBulletinVisible(true);
-                if (hideTimeout) {
-                    clearTimeout(hideTimeout);
-                    hideTimeout = undefined;
-                }
-            } else if (currentScrollY < lastScrollY.current) {
-                // Scrolling up: hide the bulletin with a small delay for smooth fade
-                setShowBulletin(false);
-                if (hideTimeout) clearTimeout(hideTimeout);
-                hideTimeout = setTimeout(() => setBulletinVisible(false), 400);
-            }
-            lastScrollY.current = currentScrollY;
-        };
-        window.addEventListener("scroll", handleScroll, { passive: true });
-        return () => {
-            window.removeEventListener("scroll", handleScroll);
-            if (hideTimeout) clearTimeout(hideTimeout);
-        };
-    }, []);
-
-    // When navigating to the landing page, ensure the bulletin is visible on load
-    useEffect(() => {
-        if (pathname === "/") {
-            setShowBulletin(true);
-            setBulletinVisible(true);
-        } else {
-            // hide by default on other pages (scroll can still show it)
-            setShowBulletin(false);
-            setBulletinVisible(false);
-        }
-    }, [pathname]);
+    // Bulletin is always visible; scroll and pathname effects removed
 
     const leftNavigationItems = [
         { label: "ABOUT", href: "/about" },
@@ -92,10 +51,9 @@ const Header = () => {
     return (
         <header className="bg-black shadow-sm sticky top-0 z-50 border-b border-gray-800 relative">
             {/* Bulletin Bar */}
-            {bulletinVisible && (
+            {showBulletin && (
                 <div
-                    className={`absolute top-0 left-0 right-0 bg-gradient-to-r from-[#b8941f] via-[#d4af37] to-[#f59e0b] text-black py-1 px-2 sm:px-4 transition-all duration-400 ease-in-out transform z-10 ${showBulletin ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-full'
-                        }`}
+                    className={`absolute top-0 left-0 right-0 bg-gradient-to-r from-[#b8941f] via-[#d4af37] to-[#f59e0b] text-black py-1 px-2 sm:px-4 transition-all duration-400 ease-in-out transform z-10 opacity-100 translate-y-0`}
                     style={{ willChange: 'opacity, transform' }}
                 >
                     <div className="luxury-container">
@@ -103,8 +61,7 @@ const Header = () => {
                             {/* Auto-changing content with fade */}
                             <div className="flex-1 text-center">
                                 <p
-                                    className={`text-xs sm:text-sm font-normal text-gray-800 tracking-wide transition-opacity duration-300 ${bulletinVisible ? 'opacity-100' : 'opacity-0'
-                                        }`}
+                                    className={`text-xs sm:text-sm font-normal text-gray-800 tracking-wide transition-opacity duration-300 ${bulletinFading ? 'opacity-0' : 'opacity-100'}`}
                                 >
                                     {bulletinContent[currentBulletinIndex]}
                                 </p>
@@ -137,7 +94,7 @@ const Header = () => {
             )}
 
             {/* Main Navigation */}
-            <div className={`luxury-container px-2 sm:px-4 lg:px-6 ${bulletinVisible && showBulletin ? 'pt-8' : ''}`}>
+            <div className={`luxury-container px-2 sm:px-4 lg:px-6 ${showBulletin ? 'pt-8' : ''}`}>
                 <div className="flex justify-center items-center h-16 sm:h-20 lg:h-24 gap-4 sm:gap-6 lg:gap-8 xl:gap-12 pt-1 sm:pt-2">
                     {/* Left Navigation */}
                     <nav className="hidden xl:flex items-center space-x-2 2xl:space-x-3">
