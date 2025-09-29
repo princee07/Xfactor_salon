@@ -23,6 +23,48 @@ const HeroSection = () => {
         return () => clearInterval(interval);
     }, [images.length]);
 
+    // Rotating typing effect for subtitle (type -> pause -> delete -> next)
+    const subtitles = React.useMemo(() => [
+        'WHERE BEAUTY MEETS EXCELLENCE',
+        'INDULGE IN LUXURY BEAUTY SERVICES',
+        'YOUR TRANSFORMATION STARTS HERE'
+    ], []);
+    const [typedSubtitle, setTypedSubtitle] = useState('');
+    const [subtitleIndex, setSubtitleIndex] = useState(0);
+    const [isDeleting, setIsDeleting] = useState(false);
+
+    useEffect(() => {
+        let timeout: NodeJS.Timeout;
+        const current = subtitles[subtitleIndex];
+        const baseSpeed = 60; // ms per character when typing
+        const deleteSpeed = 30; // ms per character when deleting
+
+        if (!isDeleting) {
+            // typing
+            if (typedSubtitle.length < current.length) {
+                timeout = setTimeout(() => {
+                    setTypedSubtitle(current.slice(0, typedSubtitle.length + 1));
+                }, baseSpeed);
+            } else {
+                // pause at full text, then start deleting
+                timeout = setTimeout(() => setIsDeleting(true), 1500);
+            }
+        } else {
+            // deleting
+            if (typedSubtitle.length > 0) {
+                timeout = setTimeout(() => {
+                    setTypedSubtitle(current.slice(0, typedSubtitle.length - 1));
+                }, deleteSpeed);
+            } else {
+                // move to next phrase
+                setIsDeleting(false);
+                setSubtitleIndex((prev) => (prev + 1) % subtitles.length);
+            }
+        }
+
+        return () => clearTimeout(timeout);
+    }, [typedSubtitle, isDeleting, subtitleIndex, subtitles]);
+
     return (
         <section className="relative min-h-[85vh] md:min-h-[92vh] w-full overflow-hidden">
             {/* Background Image Slider */}
@@ -57,7 +99,8 @@ const HeroSection = () => {
                             XFactor Salon
                         </h1>
                         <p className="text-xl md:text-2xl mb-8 font-medium tracking-wide hero-sub">
-                            WHERE BEAUTY MEETS EXCELLENCE
+                            <span>{typedSubtitle}</span>
+                            <span className="typing-caret ml-1">|</span>
                         </p>
                         <p className="text-lg mb-12 max-w-2xl mx-auto text-white/90 leading-relaxed hero-sub">
                             Transform your look with our expert stylists and premium beauty services.
