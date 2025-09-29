@@ -1,14 +1,17 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
+import { usePathname } from 'next/navigation';
 import Link from "next/link";
 import Image from "next/image";
 
 const Header = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const [currentBulletinIndex, setCurrentBulletinIndex] = useState(0);
-    const [showBulletin, setShowBulletin] = useState(true);
-    const [bulletinVisible, setBulletinVisible] = useState(true);
+    // start hidden by default; we'll show on homepage or when scrolling down
+    const [showBulletin, setShowBulletin] = useState(false);
+    const [bulletinVisible, setBulletinVisible] = useState(false);
+    const pathname = usePathname();
     const lastScrollY = React.useRef(0);
 
     // Bulletin content that will auto-change (festival season)
@@ -40,12 +43,18 @@ const Header = () => {
         const handleScroll = () => {
             const currentScrollY = window.scrollY;
             if (currentScrollY > lastScrollY.current) {
-                setShowBulletin(true); // Show when scrolling down
+                // Scrolling down: always show the bulletin (do not hide on scroll down)
+                setShowBulletin(true);
                 setBulletinVisible(true);
+                if (hideTimeout) {
+                    clearTimeout(hideTimeout);
+                    hideTimeout = undefined;
+                }
+            } else if (currentScrollY < lastScrollY.current) {
+                // Scrolling up: hide the bulletin with a small delay for smooth fade
+                setShowBulletin(false);
                 if (hideTimeout) clearTimeout(hideTimeout);
-            } else {
-                setShowBulletin(false); // Hide when scrolling up
-                hideTimeout = setTimeout(() => setBulletinVisible(false), 400); // Delay for smooth fade
+                hideTimeout = setTimeout(() => setBulletinVisible(false), 400);
             }
             lastScrollY.current = currentScrollY;
         };
@@ -55,6 +64,18 @@ const Header = () => {
             if (hideTimeout) clearTimeout(hideTimeout);
         };
     }, []);
+
+    // When navigating to the landing page, ensure the bulletin is visible on load
+    useEffect(() => {
+        if (pathname === "/") {
+            setShowBulletin(true);
+            setBulletinVisible(true);
+        } else {
+            // hide by default on other pages (scroll can still show it)
+            setShowBulletin(false);
+            setBulletinVisible(false);
+        }
+    }, [pathname]);
 
     const leftNavigationItems = [
         { label: "ABOUT", href: "/about" },

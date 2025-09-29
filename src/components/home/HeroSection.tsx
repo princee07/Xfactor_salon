@@ -98,11 +98,15 @@ const HeroSection = () => {
                         <h1 className="text-5xl md:text-7xl font-royal font-extrabold mb-6 hero-heading">
                             XFactor Salon
                         </h1>
-                        <p className="text-xl md:text-2xl mb-8 font-medium tracking-wide hero-sub">
+                        <p className="text-xl md:text-2xl mb-2 font-medium tracking-wide hero-sub">
                             <span>{typedSubtitle}</span>
                             <span className="typing-caret ml-1">|</span>
                         </p>
-                        
+                        {/* Royal tagline, visually prominent */}
+                        <p className="hero-royal mb-6">
+                            Elevate your elegance — bespoke styles, timeless beauty.
+                        </p>
+
                         <div className="flex flex-col sm:flex-row gap-6 justify-center">
                             <Link
                                 href="/appointment"
