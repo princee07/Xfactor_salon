@@ -32,6 +32,8 @@ const HeroSection = () => {
     const [typedSubtitle, setTypedSubtitle] = useState('');
     const [subtitleIndex, setSubtitleIndex] = useState(0);
     const [isDeleting, setIsDeleting] = useState(false);
+    // used to trigger a smooth transition on the paragraph when the phrase changes
+    const [subtitlePulse, setSubtitlePulse] = useState(false);
 
     useEffect(() => {
         let timeout: NodeJS.Timeout;
@@ -65,6 +67,13 @@ const HeroSection = () => {
         return () => clearTimeout(timeout);
     }, [typedSubtitle, isDeleting, subtitleIndex, subtitles]);
 
+    // Trigger a brief transition when the subtitle index changes (smooth fade/translate)
+    useEffect(() => {
+        setSubtitlePulse(true);
+        const t: NodeJS.Timeout = setTimeout(() => setSubtitlePulse(false), 600);
+        return () => clearTimeout(t);
+    }, [subtitleIndex]);
+
     return (
         <section className="relative min-h-[85vh] md:min-h-[92vh] w-full overflow-hidden">
             {/* Background Image Slider */}
@@ -95,15 +104,12 @@ const HeroSection = () => {
             <div className="relative z-10 h-full min-h-[85vh] md:min-h-[92vh] flex items-center justify-center text-white">
                 <div className="luxury-container px-4">
                     <div className="text-center animate-fade-in">
-                        <h1 className="text-5xl md:text-7xl font-royal font-extrabold mb-6 hero-heading">
+                        <h1 className="-mt-6 md:-mt-8 text-5xl md:text-7xl font-royal font-extrabold mb-6 hero-heading">
                             XFactor Salon
                         </h1>
-                        <p className="text-xl md:text-2xl mb-2 font-medium tracking-wide hero-sub">
-                            <span>{typedSubtitle}</span>
-                            <span className="typing-caret ml-1">|</span>
-                        </p>
+                        {/* subtitle removed as requested */}
                         {/* Royal tagline, visually prominent */}
-                        <p className="hero-royal mb-6">
+                        <p className={`hero-royal mb-6 transition-all duration-600 ease-out ${subtitlePulse ? 'opacity-100 translate-y-0' : 'opacity-90 -translate-y-1'}`}>
                             Elevate your elegance — bespoke styles, timeless beauty.
                         </p>
 
