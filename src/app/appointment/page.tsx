@@ -1,3 +1,4 @@
+"use client";
 import React from 'react';
 
 const AppointmentPage = () => {
@@ -52,7 +53,7 @@ const AppointmentPage = () => {
         const { name, value } = e.target;
         setFormData(prev => ({ ...prev, [name]: value }));
     };
-
+    
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
         console.log('Appointment booking:', formData);
