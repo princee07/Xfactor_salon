@@ -74,6 +74,18 @@ body {
   letter-spacing: 0.06em;
 }
 
+/* Hero typography helpers */
+.hero-heading {
+  color: #fff;
+  text-shadow: 0 6px 18px rgba(0, 0, 0, 0.6), 0 2px 6px rgba(0, 0, 0, 0.45);
+  letter-spacing: -0.02em;
+}
+
+.hero-sub {
+  color: rgba(255, 255, 255, 0.92);
+  text-shadow: 0 4px 12px rgba(0, 0, 0, 0.45);
+}
+
 .font-lato {
   font-family: 'Lato', sans-serif;
 }

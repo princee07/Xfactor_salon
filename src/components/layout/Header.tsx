@@ -11,13 +11,13 @@ const Header = () => {
     const [bulletinVisible, setBulletinVisible] = useState(true);
     const lastScrollY = React.useRef(0);
 
-    // Bulletin content that will auto-change
+    // Bulletin content that will auto-change (festival season)
     const bulletinContent = [
-        "🌟 Free Shipping on All U своесть Orders $50+",
-        "💫 20% Off First Visit - New Clients Only",
-        "✨ Book Your Appointment Today - Limited Slots Available",
-        "🎉 Follow Us for Latest Updates & Exclusive Offers",
-        "💄 Professional Hair & Beauty Services Since 2020"
+        "� Festival Special: 25% off select services — limited time!",
+        "🎁 Gift Cards Available — Perfect Holiday Gift Ideas!",
+        "✨ Extended Festival Hours — Evening appointments now open",
+        "💆 Free festive treatment with any color service (this month)",
+        "🌟 Celebrate the season with XFactor Salon — Book now!"
     ];
 
     // Auto-change bulletin content with fade animation
@@ -73,7 +73,7 @@ const Header = () => {
             {/* Bulletin Bar */}
             {bulletinVisible && (
                 <div
-                    className={`absolute top-0 left-0 right-0 bg-gradient-to-r from-yellow-400 via-yellow-500 to-yellow-600 text-black py-1 px-2 sm:px-4 transition-all duration-400 ease-in-out transform z-10 ${showBulletin ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-full'
+                    className={`absolute top-0 left-0 right-0 bg-gradient-to-r from-[#b8941f] via-[#d4af37] to-[#f59e0b] text-black py-1 px-2 sm:px-4 transition-all duration-400 ease-in-out transform z-10 ${showBulletin ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-full'
                         }`}
                     style={{ willChange: 'opacity, transform' }}
                 >
@@ -82,7 +82,7 @@ const Header = () => {
                             {/* Auto-changing content with fade */}
                             <div className="flex-1 text-center">
                                 <p
-                                    className={`text-xs sm:text-sm font-light italic tracking-wide transition-opacity duration-300 ${bulletinVisible ? 'opacity-100' : 'opacity-0'
+                                    className={`text-xs sm:text-sm font-normal text-gray-800 tracking-wide transition-opacity duration-300 ${bulletinVisible ? 'opacity-100' : 'opacity-0'
                                         }`}
                                 >
                                     {bulletinContent[currentBulletinIndex]}

@@ -44,7 +44,7 @@ const HeroSection = () => {
                             onError={() => console.error(`Failed to load image: ${image}`)}
                         />
                         {/* Dark overlay for better text readability */}
-                        <div className="absolute inset-0 "></div>
+                        <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/40 to-black/20"></div>
                     </div>
                 ))}
             </div>
@@ -53,13 +53,13 @@ const HeroSection = () => {
             <div className="relative z-10 h-full min-h-[85vh] md:min-h-[92vh] flex items-center justify-center text-white">
                 <div className="luxury-container px-4">
                     <div className="text-center animate-fade-in">
-                        <h1 className="text-5xl md:text-7xl font-playfair font-bold mb-6 drop-shadow-lg">
+                        <h1 className="text-5xl md:text-7xl font-royal font-extrabold mb-6 hero-heading">
                             XFactor Salon
                         </h1>
-                        <p className="text-xl md:text-2xl mb-8 font-light tracking-wide drop-shadow-md">
+                        <p className="text-xl md:text-2xl mb-8 font-medium tracking-wide hero-sub">
                             WHERE BEAUTY MEETS EXCELLENCE
                         </p>
-                        <p className="text-lg mb-12 max-w-2xl mx-auto text-gray-200 leading-relaxed drop-shadow-sm">
+                        <p className="text-lg mb-12 max-w-2xl mx-auto text-white/90 leading-relaxed hero-sub">
                             Transform your look with our expert stylists and premium beauty services.
                             Experience the difference at XFactor Salon.
                         </p>
