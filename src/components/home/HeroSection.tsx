@@ -102,10 +102,7 @@ const HeroSection = () => {
                             <span>{typedSubtitle}</span>
                             <span className="typing-caret ml-1">|</span>
                         </p>
-                        <p className="text-lg mb-12 max-w-2xl mx-auto text-white/90 leading-relaxed hero-sub">
-                            Transform your look with our expert stylists and premium beauty services.
-                            Experience the difference at XFactor Salon.
-                        </p>
+                        
                         <div className="flex flex-col sm:flex-row gap-6 justify-center">
                             <Link
                                 href="/appointment"
