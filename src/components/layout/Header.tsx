@@ -43,9 +43,9 @@ const Header = () => {
     ];
 
     const rightNavigationItems = [
-        { label: "GALLERY", href: "/gallery" },
-        { label: "MEDIA", href: "/media" },
-        { label: "FAQ", href: "/faq" },
+    { label: "GALLERY", href: "/gallery" },
+    { label: "COURSES", href: "/courses" },
+    { label: "FAQ", href: "/faq" },
     ];
 
     return (
