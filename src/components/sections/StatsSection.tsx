@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
+import Image from 'next/image';
 
 const StatsSection = () => {
     const [counters, setCounters] = useState({
@@ -40,14 +41,14 @@ const StatsSection = () => {
         if (!isVisible) return;
 
         const targetValues = {
-            locations: 180,
-            artists: 4000,
+            locations: 7,
+            artists: 50,
             experience: 3,
-            awards: 15
+            awards: 2000
         };
 
-        const animationDuration = 2500;
-        const steps = 60;
+        const animationDuration = 1800;
+        const steps = 45;
         const stepTime = animationDuration / steps;
 
         Object.keys(targetValues).forEach((key) => {
@@ -76,7 +77,7 @@ const StatsSection = () => {
     const stats = [
         {
             value: counters.locations,
-            suffix: "+",
+            suffix: "",
             label: "Premium Locations",
             sublabel: "Across India"
         },
@@ -95,32 +96,40 @@ const StatsSection = () => {
         {
             value: counters.awards,
             suffix: "+",
-            label: "Global Awards",
-            sublabel: "& Recognition"
+            label: "Happy Clients",
+            sublabel: ""
         }
     ];
 
     return (
         <section
             id="stats-section"
-            className="relative py-20 bg-gradient-to-br from-gray-50 via-white to-gray-100 overflow-hidden"
+            className="relative pt-20 pb-12 bg-gradient-to-br from-gray-50 via-white to-gray-100 overflow-hidden"
         >
-            {/* Background Pattern */}
-            <div className="absolute inset-0 opacity-10">
-                <div className="absolute inset-0" style={{
-                    backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23d4af37' fill-opacity='1'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`
-                }}></div>
+            {/* Background Pattern (custom multilayer grid provided by user) */}
+            <div className="absolute inset-0 z-0">
+                <div
+                    className="absolute inset-0"
+                    style={{
+                        backgroundColor: '#e3e3ee',
+                        opacity: 0.4,
+                        backgroundImage: "linear-gradient(135deg, #f1f1f1 25%, transparent 25%), linear-gradient(225deg, #f1f1f1 25%, transparent 25%), linear-gradient(45deg, #f1f1f1 25%, transparent 25%), linear-gradient(315deg, #f1f1f1 25%, #e3e3ee 25%)",
+                        backgroundPosition: '6px 0, 6px 0, 0 0, 0 0',
+                        backgroundSize: '12px 12px',
+                        backgroundRepeat: 'repeat'
+                    }}
+                />
             </div>
 
-            {/* Floating Elements */}
-            <div className="absolute top-20 left-10 w-20 h-20 bg-gradient-to-r from-gold/20 to-yellow-400/20 rounded-full blur-xl animate-pulse"></div>
-            <div className="absolute bottom-20 right-10 w-32 h-32 bg-gradient-to-r from-gold/10 to-yellow-400/10 rounded-full blur-2xl animate-pulse" style={{ animationDelay: '1s' }}></div>
+            {/* Floating Elements (hidden on small screens) */}
+            <div className="hidden md:block absolute top-20 left-10 w-20 h-20 bg-gradient-to-r from-gold/20 to-yellow-400/20 rounded-full blur-xl animate-pulse"></div>
+            <div className="hidden md:block absolute bottom-8 right-10 w-32 h-32 bg-gradient-to-r from-gold/10 to-yellow-400/10 rounded-full blur-2xl animate-pulse" style={{ animationDelay: '1s' }}></div>
 
             <div className="luxury-container relative z-10">
                 {/* Section Header */}
                 <div className="text-center mb-16">
                     <div className="inline-block">
-                        <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold font-serif text-gray-900 mb-4 tracking-tight">
+                        <h2 className="text-4xl md:text-5xl lg:text-6xl font-royal font-extrabold text-gray-900 mb-4 tracking-tight uppercase">
                             OUR ACHIEVEMENTS
                         </h2>
                         <div className="w-24 h-1 bg-gold rounded-full mx-auto"></div>
@@ -128,12 +137,17 @@ const StatsSection = () => {
                 </div>
 
                 {/* Stats Grid - Simple, no cards, no icons, all text same color */}
-                <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-8">
+                <div className="grid grid-cols-2 md:grid-cols-2 xl:grid-cols-4 gap-8">
                     {stats.map((stat, index) => (
                         <div
                             key={index}
-                            className="p-4 text-center"
+                            className="p-4 md:p-6 text-center flex flex-col items-center"
                         >
+                            {/* icon image from public/stats */}
+                            <div className="mb-3">
+                                <Image src={`/stats/${index + 1}.png`} alt={`${stat.label} icon`} width={72} height={72} className="mx-auto w-14 h-14 md:w-18 md:h-18" />
+                            </div>
+
                             <div className="mb-2">
                                 <span className="text-5xl lg:text-6xl font-extrabold font-serif text-gray-900 tracking-tight">
                                     {stat.value.toLocaleString()}
@@ -154,7 +168,7 @@ const StatsSection = () => {
                     ))}
                 </div>
 
-             
+
             </div>
         </section>
     );

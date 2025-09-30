@@ -108,14 +108,12 @@ function OurServices() {
                         OUR SERVICES
                     </h3>
                     <div className="w-24 md:w-32 h-1 bg-gradient-to-r from-transparent via-gold to-transparent mx-auto mb-4"></div>
-                    <p className="text-base md:text-lg text-gray-600 max-w-3xl mx-auto font-lato leading-relaxed mt-2">
-                        The complete salon experience with our wide range of services brings out the best of your natural beauty.
-                    </p>
+
                 </div>
             </div>
 
-            {/* StickyScroll Component - Full width, lifted content higher */}
-            <div className="w-full relative px-0 mt-0 md:mt-[-80px]">
+            {/* StickyScroll Component - Full width, keep spacing below header */}
+            <div className="w-full relative px-0 mt-6 md:mt-12">
                 <StickyScroll content={content} contentClassName="hide-scrollbar lg:h-[28rem] lg:max-h-[28rem]" />
             </div>
 
