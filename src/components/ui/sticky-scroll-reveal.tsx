@@ -131,11 +131,10 @@ export const StickyScroll = ({
                   <button
                     key={i}
                     onClick={() => setActive(i)}
-                    className={`w-3 h-3 rounded-full border-2 ${
-                      i === active
+                    className={`w-3 h-3 rounded-full border-2 ${i === active
                         ? "bg-[#d4af37] border-[#d4af37]"
                         : "bg-transparent border-[#777]"
-                    } transition-all`}
+                      } transition-all`}
                     aria-label={`Go to ${i}`}
                   />
                 ))}

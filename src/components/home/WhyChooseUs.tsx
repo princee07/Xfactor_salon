@@ -153,7 +153,7 @@ const WhyChooseUs: React.FC = () => {
                         // Default Content View
                         <div className="p-8 flex flex-col justify-between h-full">
                             <div>
-                                <h3 className="text-xl font-semibold mb-4 text-gold">Expert Stylists</h3>
+                                <h3 className="text-xl font-royal font-bold mb-4 text-gold tracking-wide">Expert Stylists</h3>
                                 {/* Scissor Icon */}
                                 <div className="mb-4">
                                     <svg
@@ -171,7 +171,7 @@ const WhyChooseUs: React.FC = () => {
                                         />
                                     </svg>
                                 </div>
-                                <p className="text-sm opacity-80 mb-6">Our team consists of highly experienced and trained professionals dedicated to perfecting your look.</p>
+                                <p className="text-lg font-playfair tracking-wide opacity-80 mb-6">Our team consists of highly experienced and trained professionals dedicated to perfecting your look.</p>
                             </div>
 
                             {/* Interactive Arrow Button */}
@@ -246,8 +246,8 @@ const WhyChooseUs: React.FC = () => {
                 {/* Top-Right "Why Choose Us" Section - Match video height */}
                 <div className="md:col-span-1 bg-black p-8 flex flex-col justify-center items-end text-right text-white h-full min-h-[300px] md:min-h-[400px]">
                     <div>
-                        <h2 className="text-4xl lg:text-5xl font-bold font-playfair mb-4 text-gold">WHY CHOOSE US?</h2> {/* Label aligned at top */}
-                        <p className="text-lg opacity-80">
+                        <h2 className="text-4xl lg:text-5xl font-royal font-bold mb-4 text-gold tracking-wide">WHY CHOOSE US?</h2>
+                        <p className="text-xl font-playfair tracking-wide opacity-80">
                             Every day we work hard to make life of our clients better and happier.
                         </p>
                     </div>
@@ -255,9 +255,9 @@ const WhyChooseUs: React.FC = () => {
 
                 {/* Bottom-Left Feature */}
                 <div className="md:col-span-1 bg-gray-100 p-8 pb-16 flex flex-col justify-start items-start text-black border border-gray-200 shadow-sm">
-                    <h3 className="text-xl font-semibold mb-2 text-gold">Timely Service</h3> {/* Added label */}
+                    <h3 className="text-xl font-royal font-bold mb-2 text-gold tracking-wide">Timely Service</h3>
                     <div className="mb-4">{features[1].icon}</div>
-                    <p className="text-sm text-gray-700">{features[1].description}</p>
+                    <p className="text-lg font-playfair tracking-wide text-gray-700">{features[1].description}</p>
                     <Link href="/services" className="mt-6 text-gold flex items-center group">
                         <span className="font-semibold text-sm mr-2">Visit site</span>
                         <svg
@@ -277,9 +277,9 @@ const WhyChooseUs: React.FC = () => {
                 <div className="md:col-span-2 grid grid-cols-1 md:grid-cols-2 gap-4 items-stretch">
                     {/* Flexible Booking Box with Hover Effect */}
                     <div className="bg-black p-8 pb-16 flex flex-col justify-start items-start text-white relative overflow-hidden group">
-                        <h3 className="text-xl font-semibold mb-2 text-gold">Flexible Booking</h3>
+                        <h3 className="text-xl font-royal font-bold mb-2 text-gold tracking-wide">Flexible Booking</h3>
                         <div className="mb-4">{features[2].icon}</div>
-                        <p className="text-sm opacity-80 mb-6">{features[2].description}</p>
+                        <p className="text-lg font-playfair tracking-wide opacity-80 mb-6">{features[2].description}</p>
 
                         {/* Calendar Animation on Hover */}
                         <div className="absolute top-4 right-4 opacity-20 group-hover:opacity-40 transition-opacity duration-300">
@@ -319,9 +319,9 @@ const WhyChooseUs: React.FC = () => {
 
                     {/* Premium Products Box with Sparkle Effect */}
                     <div className="bg-gray-100 p-8 pb-16 flex flex-col justify-start items-start text-black relative overflow-hidden group">
-                        <h3 className="text-xl font-semibold mb-2 text-gold">Premium Products</h3>
+                        <h3 className="text-xl font-royal font-bold mb-2 text-gold tracking-wide">Premium Products</h3>
                         <div className="mb-4">{features[3].icon}</div>
-                        <p className="text-sm opacity-80 mb-6">{features[3].description}</p>
+                        <p className="text-lg font-playfair tracking-wide opacity-80 mb-6">{features[3].description}</p>
 
                         {/* Sparkle Animation */}
                         <div className="absolute top-6 right-6 opacity-30 group-hover:opacity-60 transition-opacity duration-300">

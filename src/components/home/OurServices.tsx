@@ -116,7 +116,7 @@ function OurServices() {
             </div>
 
             {/* StickyScroll Component - Full width, keep spacing below header */}
-            <div className="w-full relative px-0 mt-6 md:mt-12">
+            <div className="w-full relative px-0 mt-6 md:mt-12 font-playfair tracking-wide">
                 <StickyScroll content={content} contentClassName="hide-scrollbar lg:h-[28rem] lg:max-h-[28rem]" />
             </div>
 

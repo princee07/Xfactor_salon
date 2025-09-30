@@ -63,90 +63,90 @@ const Testimonials = () => {
     };
 
     return (
-        <section
-            className="py-20 overflow-hidden relative"
-            style={{
-                backgroundImage: "url('/hero/image5.png')",
-                backgroundSize: 'cover',
-                backgroundPosition: 'center',
-                backgroundRepeat: 'no-repeat'
-            }}
-        >
-            {/* Background Overlay */}
-            <div className="absolute inset-0 "></div>
-
-            {/* Content Container */}
-            <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                {/* Section Header */}
-                <div className="text-center mb-16">
-                    <p className="text-white font-lato font-semibold text-sm mb-2 tracking-wider uppercase">
-                        Testimonials
-                    </p>
-                    <h2 className="text-4xl md:text-5xl font-playfair font-bold text-black mb-8">
-                        What Our Clients Say
-                    </h2>
-                </div>
-
-                {/* Testimonials Carousel */}
-                <div
-                    className="relative max-w-5xl mx-auto"
-                    onMouseEnter={handleMouseEnter}
-                    onMouseLeave={handleMouseLeave}
-                >
-                    <div className="overflow-hidden">
-                        <div
-                            className="flex transition-transform duration-700 ease-in-out"
-                            style={{ transform: `translateX(-${currentIndex * (100 / 3)}%)` }}
-                        >
-                            {testimonials.concat(testimonials).map((testimonial, index) => (
-                                <div
-                                    key={index}
-                                    className="w-full md:w-1/3 flex-shrink-0 p-4"
-                                >
-                                    <div className="bg-white bg-opacity-95 backdrop-blur-sm rounded-lg shadow-xl p-6 h-full transform transition-all duration-500 hover:scale-105 hover:bg-opacity-100">
-                                        {/* Large Quote Mark */}
-                                        <div className="text-5xl text-gray-200 font-serif mb-4 leading-none">
-                                            &quot;
-                                        </div>
-
-                                        {/* Testimonial Content */}
-                                        <p className="text-gray-600 font-lato leading-relaxed mb-6 text-base">
-                                            {testimonial.review}
-                                        </p>
-
-                                        {/* Customer Info */}
-                                        <div className="flex items-center">
-                                            <div className="w-12 h-12 bg-gradient-to-r from-amber-500 to-yellow-400 rounded-full flex items-center justify-center text-white font-bold mr-4">
-                                                {testimonial.avatar}
-                                            </div>
-                                            <p className="font-lato font-semibold text-gray-900 text-sm tracking-wider">
-                                                - {testimonial.name}
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-                            ))}
+        <>
+            {/* Section Header OUTSIDE image */}
+            <section className="py-16 bg-white">
+                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div className="text-center mb-12">
+                        <p className="text-gold font-lato font-semibold text-sm mb-2 tracking-wider uppercase">
+                            Testimonials
+                        </p>
+                        <h2 className="text-4xl md:text-5xl font-playfair font-bold text-black mb-4">
+                            What Our Clients Say
+                        </h2>
+                        <div className="mx-auto w-full max-w-xs md:max-w-md mb-8 flex justify-center">
+                            <img src="/royal/3.png" alt="Decorative" className="w-full h-auto object-contain rounded-md" />
                         </div>
                     </div>
-
-
                 </div>
-
-                {/* Pagination Dots */}
-                <div className="flex justify-center mt-8 space-x-2">
-                    {testimonials.map((_, index) => (
-                        <button
-                            key={index}
-                            onClick={() => setCurrentIndex(index)}
-                            className={`w-3 h-3 rounded-full transition-all duration-300 ${index === currentIndex
-                                ? 'bg-gold scale-125 shadow-lg'
-                                : 'bg-white bg-opacity-50 hover:bg-opacity-75'
-                                }`}
-                        />
-                    ))}
+            </section>
+            {/* Testimonials Carousel OVER image bg */}
+            <section
+                className="py-12 overflow-hidden relative"
+                style={{
+                    backgroundImage: "url('/hero/image5.png')",
+                    backgroundSize: 'cover',
+                    backgroundPosition: 'center',
+                    backgroundRepeat: 'no-repeat'
+                }}
+            >
+                {/* Removed background overlay for full image brightness */}
+                <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div
+                        className="relative max-w-5xl mx-auto"
+                        onMouseEnter={handleMouseEnter}
+                        onMouseLeave={handleMouseLeave}
+                    >
+                        <div className="overflow-hidden">
+                            <div
+                                className="flex transition-transform duration-700 ease-in-out"
+                                style={{ transform: `translateX(-${currentIndex * (100 / 3)}%)` }}
+                            >
+                                {testimonials.concat(testimonials).map((testimonial, index) => (
+                                    <div
+                                        key={index}
+                                        className="w-full md:w-1/3 flex-shrink-0 p-4"
+                                    >
+                                        <div className="bg-white bg-opacity-95 backdrop-blur-sm rounded-lg shadow-xl p-6 h-full transform transition-all duration-500 hover:scale-105 hover:bg-opacity-100">
+                                            {/* Large Quote Mark */}
+                                            <div className="text-5xl text-gray-200 font-serif mb-4 leading-none">
+                                                &quot;
+                                            </div>
+                                            {/* Testimonial Content */}
+                                            <p className="text-gray-600 font-playfair leading-relaxed mb-6 text-base">
+                                                {testimonial.review}
+                                            </p>
+                                            {/* Customer Info */}
+                                            <div className="flex items-center">
+                                                <div className="w-12 h-12 bg-gradient-to-r from-amber-500 to-yellow-400 rounded-full flex items-center justify-center text-white font-bold mr-4">
+                                                    {testimonial.avatar}
+                                                </div>
+                                                <p className="font-lato font-semibold text-gray-900 text-sm tracking-wider">
+                                                    - {testimonial.name}
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+                    </div>
+                    {/* Pagination Dots */}
+                    <div className="flex justify-center mt-8 space-x-2">
+                        {testimonials.map((_, index) => (
+                            <button
+                                key={index}
+                                onClick={() => setCurrentIndex(index)}
+                                className={`w-3 h-3 rounded-full transition-all duration-300 ${index === currentIndex
+                                    ? 'bg-gold scale-125 shadow-lg'
+                                    : 'bg-white bg-opacity-50 hover:bg-opacity-75'
+                                    }`}
+                            />
+                        ))}
+                    </div>
                 </div>
-            </div>
-        </section>
+            </section>
+        </>
     );
 };
 
