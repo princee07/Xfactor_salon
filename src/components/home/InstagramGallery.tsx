@@ -80,11 +80,13 @@ const InstagramGallery = () => {
                     viewport={{ once: true }}
                     transition={{ duration: 0.8 }}
                 >
-                    <h2 className="text-4xl md:text-5xl font-playfair font-bold text-gray-900 mb-6">
+                    <h2 className="text-4xl md:text-5xl font-playfair font-bold text-gray-900 mb-4">
                         Follow on Instagram
                     </h2>
-                    <div className="w-24 h-1 bg-gold mx-auto mb-6"></div>
-                    <p className="text-lg text-elegant-gray max-w-2xl mx-auto font-lato leading-relaxed">
+                    <div className="mx-auto w-full max-w-xs md:max-w-md mb-6 flex justify-center">
+                        <img src="/royal/3.png" alt="Decorative" className="w-full h-auto object-contain rounded-md" />
+                    </div>
+                    <p className="text-lg text-elegant-gray max-w-2xl mx-auto font-playfair leading-relaxed">
                         Stay connected with us on Instagram to see our latest work, behind-the-scenes moments,
                         and discover the XFactor difference every day.
                     </p>

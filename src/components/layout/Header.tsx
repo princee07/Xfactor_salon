@@ -2,13 +2,21 @@
 
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
-import Image from "next/image"; 
+import Image from "next/image";
 
 const Header = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const [currentBulletinIndex, setCurrentBulletinIndex] = useState(0);
-    // always show the bulletin
-    const showBulletin = true;
+    // Show bulletin only at top of page
+    const [showBulletin, setShowBulletin] = useState(true);
+
+    useEffect(() => {
+        const handleScroll = () => {
+            setShowBulletin(window.scrollY < 80);
+        };
+        window.addEventListener('scroll', handleScroll);
+        return () => window.removeEventListener('scroll', handleScroll);
+    }, []);
     const [bulletinFading, setBulletinFading] = useState(false);
 
     // Bulletin content that will auto-change (festival season)
@@ -43,9 +51,9 @@ const Header = () => {
     ];
 
     const rightNavigationItems = [
-    { label: "GALLERY", href: "/gallery" },
-    { label: "COURSES", href: "/courses" },
-    { label: "FAQ", href: "/faq" },
+        { label: "GALLERY", href: "/gallery" },
+        { label: "COURSES", href: "/courses" },
+        { label: "FAQ", href: "/faq" },
     ];
 
     return (
