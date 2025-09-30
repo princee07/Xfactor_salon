@@ -52,8 +52,25 @@ export const StickyScroll = ({
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
           {/* Left: heading + description */}
           <div className="order-2 lg:order-1">
-            <h3 className="text-3xl md:text-4xl font-playfair font-bold mb-6">{content[active]?.title}</h3>
-            <p className="text-gray-300 max-w-lg leading-relaxed mb-6" aria-live="polite">{content[active]?.description}</p>
+            <h3 className="text-3xl md:text-4xl font-playfair font-bold mb-2">
+              {content[active]?.title}
+            </h3>
+
+            {/* Image moved more left by reducing padding */}
+            <div className="flex justify-start -ml-4 md:-ml-6 lg:-ml-10">
+              <img
+                src="/royal/4.png"
+                alt="Service visual"
+                className="w-40 md:w-56 lg:w-64 h-auto object-contain rounded-md mb-4"
+              />
+            </div>
+
+            <p
+              className="text-gray-300 max-w-lg leading-relaxed mb-6"
+              aria-live="polite"
+            >
+              {content[active]?.description}
+            </p>
             <div className="flex items-center gap-4">
               {content[active]?.actionButton ?? null}
             </div>
@@ -94,8 +111,17 @@ export const StickyScroll = ({
 
               {/* decorative gold sparkle */}
               <div className="absolute -right-6 -top-6 hidden lg:block">
-                <svg width="36" height="36" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M12 2L13.5 8L20 9.5L13.5 11L12 18L10.5 11L4 9.5L10.5 8L12 2Z" fill="#d4af37" />
+                <svg
+                  width="36"
+                  height="36"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M12 2L13.5 8L20 9.5L13.5 11L12 18L10.5 11L4 9.5L10.5 8L12 2Z"
+                    fill="#d4af37"
+                  />
                 </svg>
               </div>
 
@@ -105,7 +131,11 @@ export const StickyScroll = ({
                   <button
                     key={i}
                     onClick={() => setActive(i)}
-                    className={`w-3 h-3 rounded-full border-2 ${i === active ? "bg-[#d4af37] border-[#d4af37]" : "bg-transparent border-[#777]"} transition-all`}
+                    className={`w-3 h-3 rounded-full border-2 ${
+                      i === active
+                        ? "bg-[#d4af37] border-[#d4af37]"
+                        : "bg-transparent border-[#777]"
+                    } transition-all`}
                     aria-label={`Go to ${i}`}
                   />
                 ))}

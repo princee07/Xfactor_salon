@@ -8,7 +8,7 @@ const content = [
     {
         title: "Hair",
         description:
-            "Transform your look with our expert stylists who specialize in precision cuts, vibrant colors, and personalized styling. From classic cuts to trendy styles, we bring your hair vision to life with professional techniques and premium products.",
+            "Transform your look with our expert stylists who specialize in precision cuts, vibrant colors, and personalized styling. From classic cuts to trendy styles, we bring your hair vision to life with professional techniques and premium products.\n\nOur hair services include:\n- Haircut & Styling: Professional cuts and styling for all hair types\n- Hair Coloring: Full color, highlights, lowlights, and color correction\n- Hair Treatments: Deep conditioning, keratin treatments, and hair masks\n- Blowout & Styling: Professional blowout and special occasion styling\nExperience luxury and care with every visit.",
         content: (
             <div className="flex h-full w-full items-center justify-center relative overflow-hidden rounded-2xl">
                 <Image
@@ -28,9 +28,9 @@ const content = [
         buttonLink: "/services/hair"
     },
     {
-        title: "Skin",
+        title: "Skin & Care",
         description:
-            "Rejuvenate and nourish your skin with our luxury facial treatments and skincare services. Our expert aestheticians use advanced techniques and premium products to give you a radiant, healthy complexion that glows from within.",
+            "Rejuvenate and nourish your skin with our luxury facial treatments and skincare services. Our expert aestheticians use advanced techniques and premium products to give you a radiant, healthy complexion that glows from within.\n\nOur skin care menu features:\n- Classic Facial: Deep cleansing facial for all skin types\n- Anti-Aging Facial: Specialized treatment to reduce signs of aging\n- Acne Treatment: Targeted treatment for problematic skin\n- Hydrating Facial: Intensive moisture treatment for dry skin\nLet us help you achieve glowing, healthy skin.",
         content: (
             <div className="flex h-full w-full items-center justify-center relative overflow-hidden rounded-2xl">
                 <Image
@@ -52,7 +52,7 @@ const content = [
     {
         title: "Makeup",
         description:
-            "Enhance your natural beauty with our professional makeup services. From everyday looks to glamorous special occasions, our talented makeup artists create stunning transformations that make you feel confident and radiant.",
+            "Enhance your natural beauty with our professional makeup services. From everyday looks to glamorous special occasions, our talented makeup artists create stunning transformations that make you feel confident and radiant.\n\nOur makeup offerings include:\n- Bridal Makeup: Elegant looks for your special day\n- Event Makeup: Glamorous styles for parties and occasions\n- Everyday Makeup: Natural and radiant finishes\n- Makeup Trials: Preview your look before the big event\nStep out with confidence and style.",
         content: (
             <div className="flex h-full w-full items-center justify-center relative overflow-hidden rounded-2xl">
                 <Image
@@ -74,7 +74,7 @@ const content = [
     {
         title: "Bride & Groom",
         description:
-            "Make your special day unforgettable with our comprehensive bridal and groom packages. From trial sessions to the big day, we ensure you look absolutely perfect with our specialized wedding beauty services tailored just for you.",
+            "Make your special day unforgettable with our comprehensive bridal and groom packages. From trial sessions to the big day, we ensure you look absolutely perfect with our specialized wedding beauty services tailored just for you.\n\nOur wedding services include:\n- Bridal Hair & Makeup: Custom looks for brides\n- Groom Styling: Hair, skin, and grooming for grooms\n- Pre-wedding Trials: Preview and perfect your style\n- Special Day Packages: All-in-one luxury for your wedding\nTrust us to make your celebration flawless.",
         content: (
             <div className="flex h-full w-full items-center justify-center relative overflow-hidden rounded-2xl">
                 <Image
