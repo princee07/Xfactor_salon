@@ -131,9 +131,9 @@ const ServicesPage = () => {
                 <div className="max-w-screen-2xl mx-auto px-6">
                     <div className="text-center">
                         <h1 className="text-5xl md:text-6xl font-royal font-extrabold text-white mb-6 tracking-tight uppercase">
-                            Our Services
+                            Our Service
                         </h1>
-                       
+
                     </div>
                 </div>
             </section>

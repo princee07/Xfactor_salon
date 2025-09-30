@@ -104,9 +104,12 @@ function OurServices() {
                     <h2 className="text-3xl md:text-6xl font-script text-gold mb-4 italic">
                         Welcome
                     </h2>
-                    <h3 className="text-3xl md:text-5xl font-playfair font-bold text-gray-900 mb-4">
+                    <h3 className="text-3xl md:text-5xl font-playfair font-bold text-gray-900 mb-2">
                         OUR SERVICES
                     </h3>
+                    <div className="mx-auto w-full max-w-xl md:max-w-2xl lg:max-w-3xl mb-2 flex justify-center">
+                        <Image src="/royal/3.png" alt="Service visual" width={0} height={0} sizes="100vw" className="w-full h-auto object-contain rounded-md" />
+                    </div>
                     <div className="w-24 md:w-32 h-1 bg-gradient-to-r from-transparent via-gold to-transparent mx-auto mb-4"></div>
 
                 </div>
