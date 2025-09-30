@@ -5,6 +5,13 @@ import Link from "next/link";
 import Image from "next/image";
 
 const Header = () => {
+    // Detect current route for nav highlight
+    const [currentPath, setCurrentPath] = useState("");
+    useEffect(() => {
+        if (typeof window !== "undefined") {
+            setCurrentPath(window.location.pathname);
+        }
+    }, []);
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const [currentBulletinIndex, setCurrentBulletinIndex] = useState(0);
     // Show bulletin only at top of page
@@ -110,11 +117,11 @@ const Header = () => {
                             <Link
                                 key={item.label}
                                 href={item.href}
-                                className="text-white hover:text-[#d4af37] text-sm xl:text-base font-semibold font-royal tracking-wider transition-all duration-300 uppercase relative group px-2 xl:px-3 transform hover:scale-105 opacity-0 animate-[fadeIn_0.5s_ease-out_forwards]"
+                                className={`text-white hover:text-[#d4af37] text-sm xl:text-base font-semibold font-royal tracking-wider transition-all duration-300 uppercase relative group px-2 xl:px-3 transform hover:scale-105 opacity-0 animate-[fadeIn_0.5s_ease-out_forwards]${currentPath === item.href ? ' text-[#d4af37]' : ''}`}
                                 style={{ animationDelay: `${index * 100}ms` }}
                             >
                                 <span className="font-semibold">{item.label}</span>
-                                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-[#d4af37] transition-all duration-300 group-hover:w-full"></span>
+                                <span className={`absolute -bottom-1 left-0 h-0.5 bg-[#d4af37] transition-all duration-300 ${currentPath === item.href ? 'w-full' : 'w-0'} group-hover:w-full`}></span>
                             </Link>
                         ))}
                     </nav>
