@@ -16,11 +16,7 @@ const geistMono = Geist_Mono({
 });
 
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   // WhatsApp Bar Scroll Animation
   const [showBar, setShowBar] = useState(false);
   const [lastScroll, setLastScroll] = useState(0);
@@ -43,6 +39,19 @@ export default function RootLayout({
     <html lang="en">
       <body className="antialiased">
         <Header />
+        {/* Fixed Book Appointment Button (Right Side) */}
+        <a
+          href="/appointment"
+          className="fixed right-0 top-[40%] z-50 flex items-center"
+          style={{ writingMode: 'vertical-rl', textOrientation: 'mixed' }}
+        >
+          <span
+            className="bg-black text-white px-3 py-2 rounded-r-lg shadow-lg font-semibold text-base tracking-wide"
+            style={{ transform: 'rotate(180deg)' }}
+          >
+            Book Appointment
+          </span>
+        </a>
         {/* Simple WhatsApp Icon Fixed Right Side */}
         <a
           href="https://wa.me/919899777619"
