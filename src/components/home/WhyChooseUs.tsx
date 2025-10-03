@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
+import { motion, AnimatePresence } from 'framer-motion';
 
 // Define a type for the feature items
 interface FeatureItem {
@@ -77,11 +78,37 @@ const WhyChooseUs: React.FC = () => {
         { src: '/instagram/5.png', title: 'Premium Treatments' }
     ];
 
+
     const [currentImageIndex, setCurrentImageIndex] = useState(0);
     const [showGallery, setShowGallery] = useState(false);
 
+    // Gallery navigation function
     const nextImage = () => {
         setCurrentImageIndex((prev) => (prev + 1) % galleryImages.length);
+    };
+
+    // For Why Choose Us card slider
+    const [whySlide, setWhySlide] = useState(0);
+    const whySlides = [
+        {
+            headline: 'Expert Stylists',
+            description: 'Our team consists of highly experienced and trained professionals dedicated to perfecting your look.'
+        },
+        {
+            headline: 'Timely Service',
+            description: 'We value your time, ensuring efficient appointments without compromising on quality or experience.'
+        },
+        {
+            headline: 'Flexible Booking',
+            description: 'Easily schedule appointments online at your convenience with our flexible booking system.'
+        },
+        {
+            headline: 'Premium Products',
+            description: 'We use only the highest quality, professional-grade products for all our services.'
+        }
+    ];
+    const nextWhySlide = () => {
+        setWhySlide((prev) => (prev + 1) % whySlides.length);
     };
 
     return (
@@ -186,14 +213,41 @@ const WhyChooseUs: React.FC = () => {
                     />
                 </div>
 
-                {/* Top-Right "Why Choose Us" Section - Match video height */}
-                <div className="md:col-span-1 bg-black p-8 flex flex-col justify-center items-end text-right text-white h-full min-h-[300px] md:min-h-[400px]">
-                    <div>
-                        <h2 className="text-4xl lg:text-5xl font-royal font-bold mb-4 text-gold tracking-wide">WHY CHOOSE US?</h2>
-                        <p className="text-xl font-playfair tracking-wide opacity-80">
-                            Every day we work hard to make life of our clients better and happier.
-                        </p>
-                    </div>
+                {/* Top-Right "Why Choose Us" Section - Heading only on first slide, then sliding content */}
+                <div className="md:col-span-1 bg-black p-8 flex flex-col justify-center items-end text-right text-white h-full min-h-[300px] md:min-h-[400px] relative overflow-hidden">
+                    <AnimatePresence initial={false} mode="wait">
+                        <motion.div
+                            key={whySlide}
+                            initial={{ x: 300, opacity: 0 }}
+                            animate={{ x: 0, opacity: 1 }}
+                            exit={{ x: -300, opacity: 0 }}
+                            transition={{ type: 'spring', stiffness: 400, damping: 40 }}
+                            className="absolute inset-0 flex flex-col justify-center items-end text-right w-full h-full p-8 pt-20"
+                        >
+                            {whySlide === 0 && (
+                                <h2 className="text-4xl lg:text-5xl font-royal font-bold mb-4 text-gold tracking-wide">WHY CHOOSE US?</h2>
+                            )}
+                            <h3 className="text-2xl font-bold text-gold mb-2">{whySlides[whySlide].headline}</h3>
+                            <p className="text-lg font-playfair tracking-wide opacity-80 mb-4">{whySlides[whySlide].description}</p>
+                        </motion.div>
+                    </AnimatePresence>
+                    {/* Arrow Button for slide navigation */}
+                    <button
+                        onClick={nextWhySlide}
+                        className="absolute bottom-8 right-8 bg-gold text-black p-3 rounded-full hover:bg-yellow-600 transition-colors duration-300 flex items-center justify-center shadow-lg z-20"
+                        aria-label="Next reason"
+                    >
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            className="h-6 w-6"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="currentColor"
+                            strokeWidth={2}
+                        >
+                            <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
+                        </svg>
+                    </button>
                 </div>
 
                 {/* Bottom-Left Feature */}
